@@ -5,16 +5,12 @@ from .types.group.subgroup import SubGroup
 from .types.instance import Instance
 from .types.instance_two import Instance as Instance2
 
-instance = Instance()
+instance = Instance(param=1)
 instance2 = Instance2()
 group = Group()
 
 print(RegisteredClass.__refs__)
 
 print(instance)
-print(instance.group)
-print(instance2)
-print(group)
-print(group.instances)
-print(group.instances2)
-print([sub.instances for sub in group.subs])
+print(instance.group())
+print(group.subintances[0].instance.param)

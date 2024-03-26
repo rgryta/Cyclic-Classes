@@ -8,7 +8,9 @@ import __main__
 
 
 def main_module_name() -> str | None:
-    """Retrieve the name of main module"""
+    """
+    Retrieve the name of main module
+    """
     package = __main__.__package__
     if package is None:
         package = __main__.__package__

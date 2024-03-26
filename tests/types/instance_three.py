@@ -2,8 +2,6 @@ from cyclic_classes.context import CyclicClassesImports
 from cyclic_classes.decorators import register
 
 with CyclicClassesImports():
-    from group import subgroup
-
     import tests.types.group as group
 
 
