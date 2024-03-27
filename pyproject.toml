@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=67.4.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cyclic-classes"
+version = "0.0.1"
+authors = [
+    { name="Radoslaw Gryta", email="radek.gryta@gmail.com" },
+]
+description = "Do not allow prints in your code"
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = ["python", "cyclic", "classes", "circular", "dependencies"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["dependencies", "optional-dependencies"]
+
+[project.urls]
+"Homepage" = "https://github.com/rgryta/Cyclic-Classes"
+"Bug Tracker" = "https://github.com/rgryta/Cyclic-Classes/issues"
+
+####### SETUPTOOLS #######
+
+[tool.setuptools.package-dir]
+"cyclic_classes" = "cyclic_classes"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+####### BUMPV #######
+
+[tool.bumpversion]
+current_version = "0.0.1"
+allow_dirty = true
+commit = true
+message = "[Version {new_version}]"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = "version = \"{current_version}\""
+replace = "version = \"{new_version}\""
+
+####### BLACK #######
+
+[tool.black]
+line-length = 120
+preview = true
+
+####### COVERAGE #######
+
+[tool.coverage.run]
+source = ["cyclic_classes/"]
+
+####### ISORT #######
+
+[tool.isort]
+profile = "black"
+line_length = 120
+length_sort = true
+atomic = true
