@@ -2,31 +2,29 @@
 Base cyclic classes unit tests
 """
 
-import types
-
-import pytest
-
-from cyclic_classes import registered
+import cc_one
 
 
-def test_testing_packages_present(cc_one, cc_two):
+def test_cc_one():
     """
-    Check if test packages are installed and available for testing
+    Check if bi-directional imports work properly
     """
-    if not all([cc_one, cc_two]):
-        pytest.fail("Had to reinstall testing packages, please re-execute unit tests")
-    assert True
+    main = cc_one.Main()
 
+    assert isinstance(main.s, cc_one.S)
+    assert isinstance(main.ms, cc_one.MS)
+    assert isinstance(main.cc_am, cc_one.CC_AM)
+    assert isinstance(main.nm, cc_one.NM)
+    assert isinstance(main.an, cc_one.AN)
+    assert isinstance(main.sma, cc_one.SMA)
+    assert isinstance(main.asma, cc_one.ASMA)
+    assert isinstance(main.cc_mm, cc_one.CC_MM)
 
-def test_registered():
-    """
-    Test if everything was registered properly
-    """
-    module = types.ModuleType("dummy")
-    print(set(registered.__dict__.keys()) - set(module.__dict__.keys()))
-
-
-def test_cc_one(cc_one):
-    group = cc_one.Group()
-    print(group)
-    assert False
+    assert isinstance(main.s.main, cc_one.Main)
+    assert isinstance(main.ms.main, cc_one.Main)
+    assert isinstance(main.cc_am.main, cc_one.Main)
+    assert isinstance(main.nm.main, cc_one.Main)
+    assert isinstance(main.an.main, cc_one.Main)
+    assert isinstance(main.sma.main, cc_one.Main)
+    assert isinstance(main.asma.main, cc_one.Main)
+    assert isinstance(main.cc_mm.main, cc_one.Main)

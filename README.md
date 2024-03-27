@@ -52,6 +52,6 @@ noprint -ve cyclic_classes
 
 ```bash
 coverage run -m pytest -xv tests
-coverage report --fail-under=70
+coverage report -m --fail-under=70
 coverage erase
 ```

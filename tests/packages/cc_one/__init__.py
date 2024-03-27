@@ -1,5 +1,10 @@
-from .types.group import Group
-from .types.instance import Instance
-from .types.instance_two import Instance as Instance2
-from .types.group.subgroup import SubGroup
-from .types.instance_three import Instance as Instance3
+# pylint:disable=missing-docstring,too-few-public-methods
+from .main import Main
+from .amodule import Class as CC_AM
+from .mmodule import MClass as CC_MM
+from .nmodule import Class as NM
+from .anmodule import AClass as AN
+from .submodule import Class as S
+from .module.submodule import Class as MS
+from .snmodule.smodule import Class as SMA
+from .asnmodule.smodule import Class as ASMA
