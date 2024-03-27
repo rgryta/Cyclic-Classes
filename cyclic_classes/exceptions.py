@@ -1,3 +1,8 @@
+"""
+Cyclic Classes - Exceptions
+"""
+
+
 class CyclicError(Exception):
     """Error from cyclic-classes package"""
 

@@ -1,3 +1,7 @@
+"""
+Cyclic Classes - __init__
+"""
+
 import logging
 
 logger = logging.getLogger(__name__)
