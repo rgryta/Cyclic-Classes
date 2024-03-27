@@ -2,7 +2,9 @@ from cyclic_classes.context import CyclicClassesImports
 from cyclic_classes.decorators import register
 
 with CyclicClassesImports():
-    import tests.types.group as group
+    import cc_one.types.group as group  # pylint:disable=cyclic-import
+
+    from .group import subgroup  # pylint:disable=cyclic-import
 
 
 @register

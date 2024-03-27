@@ -30,6 +30,7 @@ dynamic = ["dependencies", "optional-dependencies"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
+optional-dependencies = { dev = {file = ["requirements_dev.txt"]} }
 
 ####### BUMPV #######
 
@@ -62,3 +63,12 @@ profile = "black"
 line_length = 120
 length_sort = true
 atomic = true
+
+####### PYLINT #######
+
+[tool.pylint.main]
+disable = ["logging-fstring-interpolation"]
+output-format = "colorized"
+
+[tool.pylint.format]
+max-line-length = 120

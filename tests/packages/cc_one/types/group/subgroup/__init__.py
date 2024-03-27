@@ -2,7 +2,7 @@ from cyclic_classes.context import CyclicClassesImports
 from cyclic_classes.decorators import register
 
 with CyclicClassesImports():
-    from ...instance import Instance
+    from ...instance import Instance  # pylint:disable=cyclic-import
 
 
 @register

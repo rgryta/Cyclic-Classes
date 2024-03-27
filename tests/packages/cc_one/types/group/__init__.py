@@ -2,14 +2,11 @@ from cyclic_classes.context import CyclicClassesImports
 from cyclic_classes.decorators import register
 
 with CyclicClassesImports():
-    from os import path
+    # pylint:disable=cyclic-import
 
     import subgroup
     from subgroup import SubGroup
-
-    import tests.types.instance_three as inth
-    from cyclic_classes import exceptions
-    from tests.types.instance import Instance
+    from cc_one.types.instance import Instance
 
     from ..instance import Instance
     from ..instance_two import Instance as _I

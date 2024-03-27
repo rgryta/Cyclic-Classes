@@ -2,17 +2,17 @@
 Toolkit - Common: Classes
 """
 
-import importlib
+import types
 import inspect
 import logging
-import types
+import importlib
 from abc import ABC, ABCMeta
 from typing import Callable
 
 from . import registered as _registered
+from .utils import main_module_name
 from .constants import REGISTERED_MODULE
 from .exceptions import CyclicRegisteredClassError
-from .utils import main_module_name
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ class _PostInitCaller(ABCMeta):
         return obj
 
 
-class PostInitClass(metaclass=_PostInitCaller):
+class PostInitClass(metaclass=_PostInitCaller):  # pylint: disable=too-few-public-methods
     """Class with a __post_init__ support"""
 
 
@@ -73,7 +73,9 @@ class _RegisteredClassM(_PostInitCaller):
         return reg_clz
 
 
-class RegisteredClass(ABC, metaclass=_RegisteredClassM, registered_class=True):
+class RegisteredClass(
+    ABC, metaclass=_RegisteredClassM, registered_class=True
+):  # pylint: disable=too-few-public-methods
     """
     Special metaclass that allows class registration
     Meaning that if there's a class A and class B that inherits from A, then calling A() will in fact call B() instead
@@ -84,7 +86,8 @@ class RegisteredClass(ABC, metaclass=_RegisteredClassM, registered_class=True):
         create = _RegisteredClassM.__refs__.get(cls, cls)
         if create.__module__.startswith(REGISTERED_MODULE):
             raise CyclicRegisteredClassError(
-                f"Class {create} was not registered, registered class should be imported, e.g. in root module: {main_module_name()}"
+                f"Class {create} was not registered, registered class should be imported, e.g. in "
+                f"root module: {main_module_name()}"
             )
         try:
             logger.debug(f"Creating object of registered class {cls} from {create}")
@@ -108,10 +111,9 @@ def _get_recursive(obj: object, name: str, qualname: str, obj_factory: Callable[
 
         if new_obj := getattr(obj, name, None):
             return _get_recursive(obj=new_obj, name=subname, qualname=qualname, obj_factory=obj_factory)
-        else:
-            new_obj = obj_factory(obj.__qualname__ + "." + name if hasattr(obj, "__qualname__") else name)
-            setattr(obj, name, new_obj)
-            return _get_recursive(obj=new_obj, name=subname, qualname=qualname, obj_factory=obj_factory)
+        new_obj = obj_factory(obj.__qualname__ + "." + name if hasattr(obj, "__qualname__") else name)
+        setattr(obj, name, new_obj)
+        return _get_recursive(obj=new_obj, name=subname, qualname=qualname, obj_factory=obj_factory)
 
     # `Name` is no longer splittable
     if new_obj := getattr(obj, name, None):
