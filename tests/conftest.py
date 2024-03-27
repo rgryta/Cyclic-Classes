@@ -2,12 +2,12 @@
 Testing fixtures
 """
 
+import sys
 import shlex
 import pathlib
 import subprocess
 
 import pytest
-import sys
 
 """
 [build-system]
@@ -23,6 +23,7 @@ version = "0.0.1"
 
 """
 
+
 def packages_path():
     """
     Install local pip package
@@ -30,13 +31,16 @@ def packages_path():
     path = pathlib.Path(__file__).parent.resolve()
     return path / "packages"
 
+
 sys.path.append(str(packages_path()))
+
 
 @pytest.fixture
 def cc_one():
     """Mock for Instance class"""
 
     import cc_one as cc  # pylint:disable=import-outside-toplevel
+
     return cc
 
 
@@ -45,4 +49,5 @@ def cc_two():
     """Mock for Instance class"""
 
     import cc_two as cc  # pylint:disable=import-outside-toplevel
+
     return cc

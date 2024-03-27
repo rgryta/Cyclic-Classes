@@ -25,6 +25,7 @@ def test_registered():
     module = types.ModuleType("dummy")
     print(set(registered.__dict__.keys()) - set(module.__dict__.keys()))
 
+
 def test_cc_one(cc_one):
     group = cc_one.Group()
     print(group)
