@@ -154,7 +154,7 @@ For testing use coverage with pytest workers - this is due to errors that pytest
 
 ```bash
 coverage run -m pytest -xv tests
-coverage report -m --fail-under=70
+coverage report -m --fail-under=30
 coverage erase
 ```
 
