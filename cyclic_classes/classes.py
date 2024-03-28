@@ -7,7 +7,6 @@ from __future__ import annotations
 import types
 import inspect
 import logging
-import importlib
 from abc import ABC, ABCMeta
 from typing import Callable
 
@@ -162,7 +161,7 @@ def get_registered_module(name: str):
     under cyclic_classes.registered submodule.
     """
     logger.debug(f"Getting registered module: {name}")
-    module = importlib.import_module(REGISTERED_MODULE)
+    module = _registered
 
     if name:
         for mod_name in name.split("."):
