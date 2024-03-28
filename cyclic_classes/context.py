@@ -151,8 +151,10 @@ class CyclicClassesImports(_SkippableContext):
 
         same_module = mod_spec.name.split(".")[0] == self.mod.__name__.split(".")[0]
 
-        # TODO: same_module checks are made for weird behaviour that IDE sees import as correct, but it shouldn't
-        # TODO: so it actually still does work correctly with cyclic_classes even though it wouldn't without
+
+        # IMPORTANT: same_module checks are made for weird behaviour that IDE sees import as correct, but it shouldn't
+        # IMPORTANT: so it actually still does work correctly with cyclic_classes even though it wouldn't without
+        # IMPORTANT: same_module check is to handle from imports between packages as well (though it's not recommended)
         prefix = "." if with_submodules or not same_module else ".."
         imp_name = prefix + name
         logger.debug(f"Looking for [{imp_name}] under [{within}]")
