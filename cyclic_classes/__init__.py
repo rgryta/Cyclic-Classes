@@ -4,6 +4,10 @@ Cyclic Classes - __init__
 
 import logging
 
+from .decorators import register
+from .context import CyclicClassesImports as cyclic_imports
+
+
 logger = logging.getLogger(__name__)
 
 ch = logging.StreamHandler()
@@ -13,5 +17,3 @@ ch.setFormatter(formatter)
 # add the handlers to the logger
 logger.handlers.clear()
 logger.addHandler(ch)
-
-from .decorators import register, cyclic_imports  # pylint:disable=wrong-import-position
