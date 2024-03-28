@@ -8,7 +8,7 @@ def test_cc_one():
     Check if bi-directional imports work properly
     """
     import cc_one  # pylint:disable=import-outside-toplevel
-    
+
     main = cc_one.Main()
 
     assert isinstance(main.s, cc_one.S)
