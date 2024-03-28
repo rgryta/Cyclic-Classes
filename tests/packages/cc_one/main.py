@@ -1,8 +1,7 @@
 # pylint:disable=missing-docstring,too-few-public-methods
-from cyclic_classes.context import CyclicClassesImports
-from cyclic_classes.decorators import register
+from cyclic_classes import register, cyclic_imports
 
-with CyclicClassesImports():
+with cyclic_imports():
     # pylint:disable=cyclic-import
     import submodule  # pylint:disable=import-error # Incorrect (but with CyclicClassesImport it still works, since IDE also is able to do so)
     import cc_one.amodule
