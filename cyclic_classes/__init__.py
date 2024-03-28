@@ -4,9 +4,8 @@ Cyclic Classes - __init__
 
 import logging
 
-from .decorators import register
 from .context import CyclicClassesImports as cyclic_imports
-
+from .decorators import register
 
 logger = logging.getLogger(__name__)
 
