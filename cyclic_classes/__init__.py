@@ -13,3 +13,5 @@ ch.setFormatter(formatter)
 # add the handlers to the logger
 logger.handlers.clear()
 logger.addHandler(ch)
+
+from .decorators import register, cyclic_imports  # pylint:disable=wrong-import-position
