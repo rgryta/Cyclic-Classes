@@ -2,6 +2,8 @@
 Toolkit - Common: Classes
 """
 
+from __future__ import annotations
+
 import types
 import inspect
 import logging
