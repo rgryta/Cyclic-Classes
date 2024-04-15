@@ -92,7 +92,7 @@ steps = [
 ]
 
 [tool.staging.stages.format]
-description = "Test the package"
+description = "Reformat code"
 format = {package="cyclic_classes"}
 steps = [
     {step = "isort"},
@@ -100,7 +100,7 @@ steps = [
 ]
 
 [tool.staging.stages.lint]
-description = "Test the package"
+description = "Check linting"
 format = {flags="--check", package="cyclic_classes"}
 steps = [
     {parallel = {steps = ["isort", "black", "pylint", "noprint"]}},
