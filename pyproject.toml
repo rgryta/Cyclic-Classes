@@ -86,14 +86,12 @@ coverage = { prepare = "coverage run -m pytest -xv tests", execute = "coverage r
 
 [tool.staging.stages.test]
 description = "Test the package"
-format = {package="cyclic_classes"}
 steps = [
     {step = "coverage"},
 ]
 
 [tool.staging.stages.format]
 description = "Reformat code"
-format = {package="cyclic_classes"}
 steps = [
     {step = "isort"},
     {step = "black"},
