@@ -79,7 +79,7 @@ max-line-length = 120
 # Lint
 isort = { execute = "isort {flags} . tests", format = {flags = "flags"}}
 black = { execute = "black {flags} . tests", format = {flags = "flags"}}
-pylint = { execute = "pylint {package} tests", format = {package = "package"}}
+pylint = { execute = "pylint {package} tests tests/packages/**/cc_one tests/packages/**/cc_two", format = {package = "package"}}
 noprint = { execute = "noprint -ve {package} tests", format = {package = "package"}}
 # Test
 coverage = { prepare = "coverage run -m pytest -xv tests", execute = "coverage report -m --fail-under=30", cleanup = "coverage erase"}
