@@ -8,9 +8,9 @@ version = "0.0.1"
 authors = [
     { name="Radoslaw Gryta", email="radek.gryta@gmail.com" },
 ]
-description = "Do not allow prints in your code"
+description = "Allow creation of circular module dependencies between classes"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 keywords = ["python", "cyclic", "classes", "circular", "dependencies"]
 classifiers = [
     "Programming Language :: Python :: 3",
