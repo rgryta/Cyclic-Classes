@@ -41,9 +41,19 @@ class _RegisteredClassM(_PostInitCaller):
 
     __refs__: dict[Callable] = {}
 
-    def __new__(mcs, name, bases, dct, **kwargs):
-        # Base registration classes provide the registered_class kwarg as True
-        if kwargs.get("registered_class", False):
+    def __new__(mcs, name, bases, dct, **kwargs):  # pylint: disable=too-many-locals
+        # Base registration classes provide the registered_class kwarg as True <- handled by @registerd decorator
+        # If we're creating a subclass of registered class - then we have to take the original class underneath first
+        reg_class = False
+        new_bases = tuple()
+        for base in bases:
+            if new_base := getattr(base, "__registered__", False):
+                reg_class = True
+                new_bases += (new_base,)
+            else:
+                new_bases += (base,)
+
+        if kwargs.get("registered_class", reg_class):
             return super().__new__(mcs, name, bases, dct)
 
         # Actual classes should contain class_name (comes from decorator)

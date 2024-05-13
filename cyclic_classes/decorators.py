@@ -24,4 +24,5 @@ def register(cls):
         dict(cls.__dict__),
         class_name=registered_name,
     )
+    new_cls.__registered__ = cls
     return new_cls
