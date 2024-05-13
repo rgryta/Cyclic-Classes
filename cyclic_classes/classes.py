@@ -47,7 +47,7 @@ class _RegisteredClassM(_PostInitCaller):
         reg_class = False
         new_bases = tuple()
         for base in bases:
-            if new_base:=getattr(base, "__registered__", False):
+            if new_base := getattr(base, "__registered__", False):
                 reg_class = True
                 new_bases += (new_base,)
             else:
