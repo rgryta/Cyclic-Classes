@@ -41,7 +41,7 @@ class _RegisteredClassM(_PostInitCaller):
 
     __refs__: dict[Callable] = {}
 
-    def __new__(mcs, name, bases, dct, **kwargs):
+    def __new__(mcs, name, bases, dct, **kwargs):  # pylint: disable=too-many-locals
         # Base registration classes provide the registered_class kwarg as True <- handled by @registerd decorator
         # If we're creating a subclass of registered class - then we have to take the original class underneath first
         reg_class = False
